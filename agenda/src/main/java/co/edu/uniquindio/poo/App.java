@@ -1,6 +1,6 @@
 package Agenda;
 
-public class App2 {
+public class App {
     public static void main(String[] args) {
         Contacto contacto1 = new Contacto("Nicolas","nico","Habitat","3057008","nicolas@gmail.com");
         Contacto contacto2 = new Contacto("Luara", "lau", "Habitat", "30570474808", "laura@gmail.com");
