@@ -1,6 +1,6 @@
 package Agenda;
 
-public class App2 {
+public class App {
     public static void main(String[] args) {
         Contacto contacto1 = new Contacto("Nicolas","nico","Habitat","3057970008","nicolas@gmail.com");
         Contacto contacto2 = new Contacto("Luis","lucho","Habitat","3057007878","Luis@gmail.com");
@@ -9,7 +9,7 @@ public class App2 {
         Contacto contacto5 = new Contacto("Nicolas","nico","Habitat","3057970008","nicolas@gmail.com");
         Contacto contacto6 = new Contacto("Nicolas","nico","Habitat","3057970008","nicolas@gmail.com");
 
-        Grupo grupoIglesia = new Grupo("Grupo Iglesia");
+        Grupo grupoIglesia = new Grupo("Grupo Iglesia", Grupo.Categoria.Iglesia);
 
         grupoIglesia.agregarContacto(contacto1);
         grupoIglesia.agregarContacto(contacto2);
