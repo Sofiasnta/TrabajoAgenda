@@ -1,4 +1,4 @@
-package co.edu.uniquindio.poo;
+package Agenda;
 
 import java.util.Collection;
 import java.util.LinkedList;
@@ -8,12 +8,12 @@ public class Reunion {
     public String fecha;
     public String hora;
     public Collection<Contacto> contactos;
-    
-    public Reunion (String descripcion, String fecha, String hora) {
+
+    public Reunion(String descripcion, String fecha, String hora) {
         this.descripcion = descripcion;
         this.fecha = fecha;
         this.hora = hora;
-        contactos = new LinkedList<>();
+        contactos=new LinkedList<>();
     }
 
     public String getDescripcion() {
@@ -39,7 +39,6 @@ public class Reunion {
     public void setHora(String hora) {
         this.hora = hora;
     }
-    
 
     public Collection<Contacto> getContactos() {
         return contactos;
@@ -57,25 +56,40 @@ public class Reunion {
         }
         return true;
     }
-
     public void agregarContacto(Contacto contacto) {
-        boolean esUnico = verificarContacto(contacto.getNombre(), contacto.getTelefono());
-        if (esUnico) {
-            contactos.add(contacto);
-        } else {
-            System.out.println("El Contacto Ya Existe");
+            boolean esUnico = verificarContacto(contacto.getNombre(), contacto.getTelefono());
+            if (esUnico) {
+                contactos.add(contacto);
+            } else {
+                System.out.println("El Contacto Ya Existe");
+            }
+        }
+
+    public void eliminarContacto(String nombre,String telefono) {
+        for (Contacto contacto : contactos) {
+            if (nombre.equals(contacto.getNombre()) && telefono.equals(contacto.getTelefono())) {
+                contactos.remove(contacto);
+                break;
+            }
         }
     }
-
     public void setReunion(String descripcion, String fecha, String hora){
         this.descripcion = descripcion;
         this.fecha = fecha;
         this.hora = hora;
     }
-    
-    public String toString() {
-        return "Reunion [descripcion=" + descripcion + ", fecha=" + fecha + ", hora=" + hora + ", contactos="
-                + contactos + "]";
-    }
 
+
+    @Override
+    public String toString() {
+        return "Reunion{" +
+                "descripcion='" + descripcion + '\'' +
+                "Fecha: " + fecha + '\''+
+                "Hora: " + hora + '\''+
+                "La lista de asistentes es: " + contactos +
+                '}';
+    }
 }
+
+
+
