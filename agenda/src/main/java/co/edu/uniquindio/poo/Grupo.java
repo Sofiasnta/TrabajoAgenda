@@ -1,4 +1,4 @@
-package Agenda;
+package co.edu.uniquindio.poo;
 
 import java.util.Collection;
 import java.util.LinkedList;
@@ -8,8 +8,8 @@ public class Grupo {
     public Categoria categoria;
 
     public enum Categoria {
-        Oficina,Amigos, Trabajo, Iglesia
-    }
+        Oficina, Fiesta, Amigos, Familia, Iglesia
+    };
 
     public Collection<Contacto> contactos;
 
@@ -23,6 +23,7 @@ public class Grupo {
         this.nombre = nombre;
         this.contactos = new LinkedList<>();
     }
+
 
     public String getNombre() {
         return nombre;
@@ -58,7 +59,17 @@ public class Grupo {
                 System.out.println("El Contacto Ya Existe");
             }
         } else {
-            System.out.println("La Lista de Contactos está llena");
+            System.out.println("La Lista de Contactos esta llena");
+        }
+
+    }
+
+    public void eliminarContacto(String nombre, String telefono) {
+        for (Contacto contacto : contactos) {
+            if (nombre.equals(contacto.getNombre()) && telefono.equals(contacto.getTelefono())) {
+                contactos.remove(contacto);
+                break;
+            }
         }
     }
 
@@ -72,15 +83,21 @@ public class Grupo {
     }
 
     public boolean verificarTamanioLista() {
-        return contactos.size() <= 5;
+        if (contactos.size() <= 5) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    @Override
-    public String toString() {
-        return "Grupo{" +
-                "nombre='" + nombre + '\'' +
-                ", categoria=" + categoria +
-                ", contactos=" + contactos +
-                '}';
+    // hacer esto en reuniom pero llamar todos lños parametros por que los puedo
+    // editar todos y en el main los inicializo para editar
+    public void setGrupo(String nombre) {
+        this.nombre = nombre;
     }
+
+    public String toString() {
+        return "Grupo [nombre=" + nombre + ", categoria=" + categoria + ", contactos=" + contactos + "]";
+    }
+
 }
