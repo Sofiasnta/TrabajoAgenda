@@ -50,7 +50,10 @@ public class App {
          
         System.out.println(fiesta.getContactos());
 
+        contacto1.setNombre("Rosa");
+        System.out.println(contacto1);
 
     }
 
 }
+
