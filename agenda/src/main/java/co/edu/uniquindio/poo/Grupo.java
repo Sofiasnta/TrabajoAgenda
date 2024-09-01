@@ -1,31 +1,28 @@
-package co.edu.uniquindio.poo;
+package Agenda;
 
 import java.util.Collection;
 import java.util.LinkedList;
 
 public class Grupo {
     public String nombre;
+    public Categoria categoria;
 
-    public enum categoria {
-        OFICINA, FIESTA, AMIGOS, FAMILIA
-    };
+    public enum Categoria {
+        Oficina,Amigos, Trabajo, Iglesia
+    }
 
     public Collection<Contacto> contactos;
 
-    public Grupo(String nombre, Collection<Contacto> contactos) {
+    public Grupo(String nombre, Categoria categoria) {
         this.nombre = nombre;
-        this.contactos = contactos;
-        contactos = new LinkedList<>();
+        this.categoria = categoria;
+        this.contactos = new LinkedList<>();
     }
-
-    
 
     public Grupo(String nombre) {
         this.nombre = nombre;
-        contactos = new LinkedList<>();
+        this.contactos = new LinkedList<>();
     }
-
-
 
     public String getNombre() {
         return nombre;
@@ -43,6 +40,14 @@ public class Grupo {
         this.contactos = contactos;
     }
 
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
     public void agregarContacto(Contacto contacto) {
         boolean isCupo = verificarTamanioLista();
         if (isCupo) {
@@ -53,9 +58,8 @@ public class Grupo {
                 System.out.println("El Contacto Ya Existe");
             }
         } else {
-            System.out.println("La Lista de Contactos esta llena");
+            System.out.println("La Lista de Contactos está llena");
         }
-
     }
 
     public boolean verificarContacto(String nombre, String telefono) {
@@ -68,11 +72,15 @@ public class Grupo {
     }
 
     public boolean verificarTamanioLista() {
-        if (contactos.size() <= 5) {
-            return true;
-        } else {
-            return false;
-        }
+        return contactos.size() <= 5;
     }
 
+    @Override
+    public String toString() {
+        return "Grupo{" +
+                "nombre='" + nombre + '\'' +
+                ", categoria=" + categoria +
+                ", contactos=" + contactos +
+                '}';
+    }
 }
