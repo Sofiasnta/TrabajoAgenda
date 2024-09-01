@@ -1,4 +1,4 @@
-package co.edu.uniquindio.poo;
+package Agenda;
 
 import java.util.Collection;
 import java.util.LinkedList;
@@ -8,8 +8,8 @@ public class Grupo {
     public Categoria categoria;
 
     public enum Categoria {
-        Oficina, Fiesta, Amigos, Familia, Iglesia
-    };
+        Oficina,Amigos, Trabajo, Iglesia
+    }
 
     public Collection<Contacto> contactos;
 
@@ -44,6 +44,22 @@ public class Grupo {
         this.categoria = categoria;
     }
 
+    public boolean verificarTamanioLista() {
+        if (contactos.size() < 5) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public boolean verificarContacto(String nombre, String telefono) {
+        for (Contacto contacto : contactos) {
+            if (nombre.equals(contacto.getNombre()) && telefono.equals(contacto.getTelefono())) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public void agregarContacto(Contacto contacto) {
         boolean isCupo = verificarTamanioLista();
         if (isCupo) {
@@ -58,8 +74,7 @@ public class Grupo {
         }
 
     }
-
-    public void eliminarContacto(String nombre, String telefono) {
+    public void eliminarContacto(String nombre,String telefono) {
         for (Contacto contacto : contactos) {
             if (nombre.equals(contacto.getNombre()) && telefono.equals(contacto.getTelefono())) {
                 contactos.remove(contacto);
@@ -68,32 +83,16 @@ public class Grupo {
         }
     }
 
-    public boolean verificarContacto(String nombre, String telefono) {
-        for (Contacto contacto : contactos) {
-            if (nombre.equals(contacto.getNombre()) && telefono.equals(contacto.getTelefono())) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public boolean verificarTamanioLista() {
-        if (contactos.size() < 5) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    // hacer esto en reuniom pero llamar todos lños parametros por que los puedo
-    // editar todos y en el main los inicializo para editar
     public void setGrupo(String nombre) {
         this.nombre = nombre;
     }
 
+    @Override
     public String toString() {
-        return "Grupo [nombre=" + nombre + ", categoria=" + categoria + ", contactos=" + contactos + "]";
+        return "Grupo{" +
+                "nombre='" + nombre + '\'' +
+                ", categoria=" + categoria +
+                ", contactos=" + contactos +
+                '}';
     }
-
 }
-
