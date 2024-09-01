@@ -19,11 +19,6 @@ public class Grupo {
         this.contactos = new LinkedList<>();
     }
 
-    public Grupo(String nombre) {
-        this.nombre = nombre;
-        this.contactos = new LinkedList<>();
-    }
-
 
     public String getNombre() {
         return nombre;
@@ -83,7 +78,7 @@ public class Grupo {
     }
 
     public boolean verificarTamanioLista() {
-        if (contactos.size() <= 5) {
+        if (contactos.size() < 5) {
             return true;
         } else {
             return false;
@@ -101,3 +96,4 @@ public class Grupo {
     }
 
 }
+
